@@ -7,21 +7,21 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
-    background-color: #FFFFFF;
+    background-color: #000000;
   }
 }
 
 :root {
-  --foreground-rgb: 29, 29, 31;
-  --background-start-rgb: 255, 255, 255;
-  --background-end-rgb: 255, 255, 255;
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 0, 0, 0;
+  --background-end-rgb: 0, 0, 0;
 }
 
-* {
-  box-sizing: border-box;
+/* Custom transitions for Apple aesthetic */
+.transition-all {
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Apple-style smooth scroll */
 html {
   scroll-behavior: smooth;
 }
