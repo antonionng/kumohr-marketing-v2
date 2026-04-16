@@ -3,20 +3,25 @@
 @tailwind utilities;
 
 @layer base {
-  html {
-    scroll-behavior: smooth;
+  body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    background-color: #FFFFFF;
   }
 }
 
 :root {
   --foreground-rgb: 29, 29, 31;
-  --background-start-rgb: 251, 251, 251;
+  --background-start-rgb: 255, 255, 255;
   --background-end-rgb: 255, 255, 255;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: rgb(var(--background-start-rgb));
+* {
+  box-sizing: border-box;
+}
+
+/* Apple-style smooth scroll */
+html {
+  scroll-behavior: smooth;
 }
