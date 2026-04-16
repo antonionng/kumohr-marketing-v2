@@ -1,183 +1,217 @@
 "use client";
 
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
-export default function AppleV3Landing() {
+export default function AppleV4Landing() {
+  const { scrollYProgress } = useScroll();
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
+  const heroScale = useTransform(scrollYProgress, [0, 0.2], [1, 0.95]);
+
   return (
-    <div className="bg-[#FFFFFF] text-[#1D1D1F] font-[-apple-system,BlinkMacSystemFont,'SF_Pro_Display','SF_Pro_Icons','Helvetica_Neue',Helvetica,Arial,sans-serif] selection:bg-[#0071E3]/20 overflow-x-hidden antialiased">
-      {/*  Navigation */}
-      <nav className="fixed top-0 z-[100] w-full h-[48px] bg-[rgba(255,255,255,0.8)] backdrop-blur-[20px] border-b border-[rgba(0,0,0,0.08)]">
+    <div className="bg-[#000000] text-[#FFFFFF] font-[-apple-system,BlinkMacSystemFont,'SF_Pro_Display','SF_Pro_Icons','Helvetica_Neue',Helvetica,Arial,sans-serif] selection:bg-[#0071E3]/30 overflow-x-hidden antialiased">
+      {/*  Glass Navigation */}
+      <nav className="fixed top-0 z-[100] w-full h-[48px] bg-[rgba(0,0,0,0.72)] backdrop-blur-[20px] border-b border-[rgba(255,255,255,0.08)]">
         <div className="max-w-[1024px] mx-auto h-full flex items-center justify-between px-6">
-          <div className="flex items-center gap-1.5 cursor-pointer hover:opacity-70 transition-opacity">
-            <div className="w-4 h-4 rounded-full bg-blue-600 shadow-[0_0_10px_rgba(0,113,227,0.3)]"></div>
+          <div className="flex items-center gap-2 cursor-pointer group">
+            <div className="w-4 h-4 rounded-full bg-blue-600 shadow-[0_0_15px_rgba(0,113,227,0.5)] group-hover:scale-110 transition-transform"></div>
             <span className="text-[17px] font-semibold tracking-tight">KumoHR</span>
           </div>
-          <div className="hidden md:flex gap-10 text-[12px] font-normal text-[#1d1d1f] opacity-80">
+          <div className="hidden md:flex gap-10 text-[12px] font-normal text-[#F5F5F7] opacity-80">
             <a href="#vision" className="hover:opacity-100 transition-opacity">Vision</a>
             <a href="#systems" className="hover:opacity-100 transition-opacity">Systems</a>
             <a href="#outcomes" className="hover:opacity-100 transition-opacity">Outcomes</a>
           </div>
-          <button className="bg-[#0071E3] hover:bg-[#0077ED] text-white text-[12px] px-3.5 py-1 rounded-full font-medium transition-colors shadow-sm">
+          <button className="bg-[#F5F5F7] hover:bg-[#FFFFFF] text-[#1D1D1F] text-[12px] px-3.5 py-1 rounded-full font-medium transition-colors">
             Experience
           </button>
         </div>
       </nav>
 
-      <main className="pt-[48px]">
-        {/* Cinematic Hero - Massive Typography */}
-        <section id="vision" className="relative min-h-[90vh] flex flex-col items-center justify-center text-center px-6 pt-24 pb-48">
+      <main>
+        {/* Full-Bleed Hero - The Apple iPhone/Mac Style */}
+        <section id="vision" className="relative h-screen flex flex-col items-center justify-center text-center overflow-hidden">
           <motion.div 
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
-            className="z-10"
+            style={{ opacity: heroOpacity, scale: heroScale }}
+            className="z-10 px-6"
           >
-            <h2 className="text-[24px] md:text-[32px] font-semibold tracking-tight text-[#1D1D1F] mb-6">Exceptional People Operations.</h2>
-            <h1 className="text-[64px] md:text-[120px] font-bold leading-[1.02] tracking-[-0.03em] mb-10 max-w-6xl mx-auto">
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="text-[21px] md:text-[28px] font-semibold tracking-tight text-[#86868b] mb-4"
+            >
+              Exceptional Operations.
+            </motion.h2>
+            <motion.h1 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="text-[56px] md:text-[100px] font-bold leading-[1.05] tracking-[-0.03em] mb-10 max-w-6xl mx-auto"
+            >
               Delivered<br/>
-              <span className="bg-gradient-to-b from-[#0071E3] to-[#004A94] bg-clip-text text-transparent">Autonomously.</span>
-            </h1>
-            <p className="mx-auto mt-12 max-w-[600px] text-[19px] md:text-[24px] font-medium leading-[1.4] text-[#86868b] antialiased">
-              Legacy HR records the past. KumoHR engineers the future. The first System of Action for high-velocity founders.
-            </p>
-            <div className="flex flex-col md:flex-row gap-8 justify-center items-center mt-16">
-              <button className="bg-[#0071E3] hover:bg-[#0077ED] text-white text-[19px] px-10 py-4 rounded-full font-semibold transition-all hover:scale-[1.02] active:scale-95 shadow-xl shadow-blue-500/20">
+              <span className="bg-gradient-to-b from-[#FFFFFF] to-[#86868b] bg-clip-text text-transparent">Autonomously.</span>
+            </motion.h1>
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 1 }}
+              className="flex flex-col md:flex-row gap-8 justify-center items-center mt-12"
+            >
+              <button className="bg-[#0071E3] hover:bg-[#0077ED] text-white text-[19px] px-10 py-4 rounded-full font-semibold transition-all hover:scale-[1.05] active:scale-95 shadow-2xl shadow-blue-500/20">
                 Experience KumoHR
               </button>
               <a href="#" className="text-[#0066cc] text-[19px] font-medium hover:underline flex items-center gap-1.5 group">
                 Watch the film <span className="text-[16px] group-hover:translate-x-1 transition-transform">▶</span>
               </a>
-            </div>
+            </motion.div>
           </motion.div>
           
-          {/* Ambient Background Glow */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full pointer-events-none overflow-hidden">
-             <div className="absolute top-[20%] left-[-10%] w-[60%] h-[60%] rounded-full bg-blue-100/40 blur-[150px]"></div>
-             <div className="absolute bottom-[20%] right-[-10%] w-[60%] h-[60%] rounded-full bg-gray-100/60 blur-[150px]"></div>
+          {/* Hero Image Background (Render of Dashboard) */}
+          <div className="absolute inset-0 z-0">
+             <img 
+               src="https://sc02.alicdn.com/kf/A112fb6efea5a4a448b671965d63a71b4U.png" 
+               alt="KumoHR Dashboard" 
+               className="w-full h-full object-cover opacity-40 mix-blend-lighten"
+             />
+             <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black"></div>
           </div>
         </section>
 
-        {/* Bento Grid - The Apple Product Layout */}
-        <section id="systems" className="bg-[#F5F5F7] py-48 px-6">
-          <div className="max-w-[1240px] mx-auto">
-            <motion.h2 
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 1 }}
-              className="text-[48px] md:text-[72px] font-bold tracking-tight mb-24 text-center"
-            >
-              The System of Action.
-            </motion.h2>
-            
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-8 auto-rows-[480px]">
-              
-              {/* Action Gap - Column 1-7 */}
-              <motion.div 
-                whileHover={{ scale: 1.01 }}
-                className="md:col-span-7 bg-white rounded-[32px] p-16 flex flex-col justify-between overflow-hidden relative shadow-sm hover:shadow-2xl transition-all duration-500 border border-[rgba(0,0,0,0.02)]"
-              >
-                 <div>
-                    <h3 className="text-[32px] md:text-[48px] font-bold tracking-tight leading-[1.1]">Stop Alerting.<br/>Start Acting.</h3>
-                    <p className="mt-8 text-[21px] text-[#86868b] leading-[1.5] max-w-[420px]">
-                      We bridge the gap between data and execution. KumoHR anticipates your next move across 150+ countries.
-                    </p>
+        {/* The Action Gap - High-Impact Interstitial */}
+        <section id="systems" className="bg-[#FFFFFF] text-[#1D1D1F] py-48 px-6">
+          <div className="max-w-[1240px] mx-auto text-center">
+             <motion.h2 
+               initial={{ opacity: 0, scale: 0.95 }}
+               whileInView={{ opacity: 1, scale: 1 }}
+               transition={{ duration: 0.8 }}
+               className="text-[48px] md:text-[80px] font-bold tracking-tight mb-24"
+             >
+               The System of Action.
+             </motion.h2>
+             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+               
+               {/* Global Card */}
+               <motion.div 
+                 whileHover={{ y: -10 }}
+                 className="bg-[#F5F5F7] rounded-[40px] p-12 h-[600px] flex flex-col justify-between overflow-hidden group border border-[rgba(0,0,0,0.02)]"
+               >
+                 <div className="text-left">
+                   <h3 className="text-[32px] md:text-[42px] font-bold tracking-tight leading-tight">150+ Countries.<br/>Borderless Execution.</h3>
+                   <p className="mt-6 text-[19px] text-[#86868b] leading-[1.5] max-w-[360px]">
+                     Autonomous payroll and compliance across every major jurisdiction. No friction. No manual overhead.
+                   </p>
                  </div>
-                 <div className="mt-12 -mb-20 -mr-20 flex justify-end">
-                    <div className="w-[400px] h-[400px] bg-blue-50/50 rounded-tl-[80px] border-t border-l border-blue-100/50 flex items-center justify-center p-20">
-                       <div className="w-full h-1.5 bg-gray-100 rounded-full relative overflow-hidden">
-                          <motion.div 
-                            initial={{ width: "0%" }}
-                            whileInView={{ width: "65%" }}
-                            transition={{ duration: 2, ease: "easeInOut" }}
-                            className="absolute left-0 top-0 h-full bg-blue-600 shadow-[0_0_15px_rgba(0,113,227,0.5)]"
-                          />
-                       </div>
+                 <div className="relative mt-12 h-64 w-full flex items-center justify-center">
+                   <img 
+                     src="https://sc02.alicdn.com/kf/A4bfc7ab865974c4185dc57c7eb9db0c71.png" 
+                     className="w-full h-full object-contain opacity-80 group-hover:scale-110 transition-transform duration-1000"
+                     alt="Global Reach"
+                   />
+                 </div>
+               </motion.div>
+
+               {/* Talent Card */}
+               <motion.div 
+                 whileHover={{ y: -10 }}
+                 className="bg-[#1D1D1F] text-[#FFFFFF] rounded-[40px] p-12 h-[600px] flex flex-col justify-between overflow-hidden group border border-[rgba(255,255,255,0.05)]"
+               >
+                 <div className="text-left">
+                   <h3 className="text-[32px] md:text-[42px] font-bold tracking-tight leading-tight">Elite Talent Density.<br/>Surgically Ranked.</h3>
+                   <p className="mt-6 text-[19px] text-[#86868b] leading-[1.5] max-w-[360px]">
+                     We don't just screen; we rank for technical and cultural excellence. Building high-velocity teams autonomously.
+                   </p>
+                 </div>
+                 <div className="relative mt-12 h-64 w-full flex items-center justify-center p-8 bg-blue-900/10 rounded-3xl">
+                    <div className="w-1.5 h-full bg-blue-600/20 rounded-full relative overflow-hidden">
+                       <motion.div 
+                         initial={{ height: "0%" }}
+                         whileInView={{ height: "85%" }}
+                         transition={{ duration: 1.5, ease: "easeInOut" }}
+                         className="absolute top-0 left-0 w-full bg-blue-600 shadow-[0_0_20px_rgba(0,113,227,0.8)]"
+                       />
+                    </div>
+                    <div className="ml-12 flex-1 space-y-6">
+                       <div className="h-2 w-3/4 bg-blue-500/20 rounded-full"></div>
+                       <div className="h-2 w-full bg-blue-500/40 rounded-full"></div>
+                       <div className="h-2 w-1/2 bg-blue-500/20 rounded-full"></div>
                     </div>
                  </div>
-              </motion.div>
+               </motion.div>
 
-              {/* Global - Column 8-12 */}
-              <motion.div 
-                whileHover={{ scale: 1.01 }}
-                className="md:col-span-5 bg-white rounded-[32px] p-16 flex flex-col justify-between overflow-hidden relative shadow-sm hover:shadow-2xl transition-all duration-500 border border-[rgba(0,0,0,0.02)]"
-              >
-                 <div className="relative z-10">
-                    <h3 className="text-[32px] md:text-[48px] font-bold tracking-tight leading-[1.1]">150+ Countries.</h3>
-                    <p className="mt-8 text-[21px] text-[#86868b] leading-[1.5]">
-                      Autonomous execution against real-time local labor laws. Borderless scale.
-                    </p>
-                 </div>
-                 <div className="flex items-center justify-center pt-12">
-                   <div className="w-64 h-64 rounded-full border-2 border-gray-100 flex items-center justify-center relative">
-                      <div className="w-48 h-48 rounded-full border border-gray-100 flex items-center justify-center">
-                        <div className="w-4 h-4 rounded-full bg-blue-600 animate-pulse"></div>
-                      </div>
-                      <div className="absolute top-0 right-[20%] w-3 h-3 bg-blue-200 rounded-full"></div>
-                   </div>
-                 </div>
-              </motion.div>
-
-            </div>
+             </div>
           </div>
         </section>
 
-        {/* The Standard - Cinematic Reveal */}
-        <section id="outcomes" className="bg-white py-48 px-6">
+        {/* Visionary Section - Image Focused */}
+        <section id="outcomes" className="bg-[#FFFFFF] py-48 px-6 text-center">
           <div className="max-w-[1024px] mx-auto">
-             <div className="grid grid-cols-1 md:grid-cols-3 gap-24">
+             <motion.h2 
+               initial={{ opacity: 0, y: 30 }}
+               whileInView={{ opacity: 1, y: 0 }}
+               transition={{ duration: 0.8 }}
+               className="text-[40px] md:text-[64px] font-bold tracking-tight mb-24"
+             >
+               The Excellence Standard.
+             </motion.h2>
+             <div className="relative w-full aspect-[16/9] rounded-[40px] overflow-hidden shadow-2xl mb-24">
+               <img 
+                 src="https://sc02.alicdn.com/kf/A5bf554a5222048deb320e78556c06a98L.png" 
+                 alt="Visionary HR" 
+                 className="w-full h-full object-cover"
+               />
+               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex flex-col justify-end p-16 text-left">
+                  <h4 className="text-[32px] font-bold text-white mb-4 italic">\"KumoHR is the first platform that understands human capital as a high-velocity engine.\"</h4>
+                  <p className="text-gray-300 text-[19px]">Founders at Unicorn Scale</p>
+               </div>
+             </div>
+             <div className="grid grid-cols-1 md:grid-cols-3 gap-16 text-left">
                {[
-                 { title: 'Surgical Ranking', body: 'Elite talent density via ML-driven performance ranking.', label: '3x Faster' },
-                 { title: 'Invisible Payroll', body: 'Zero-touch compliance in 150+ jurisdictions.', label: '99.9% Accurate' },
-                 { title: 'Instant Readiness', body: 'Day-one impact through autonomous onboarding.', label: 'Immediate ROI' }
+                 { title: 'Invisible Payroll', body: '99.9% autonomous accuracy across 150+ countries.', label: 'Zero Error' },
+                 { title: 'Day-One Readiness', body: 'Contracts and hardware delivered autonomously.', label: 'Instant Impact' },
+                 { title: 'Surgical Analytics', body: 'Predictive clarity for leadership teams.', label: 'Actionable Insights' }
                ].map((item, i) => (
-                 <motion.div 
-                   key={i}
-                   initial={{ opacity: 0, y: 20 }}
-                   whileInView={{ opacity: 1, y: 0 }}
-                   transition={{ delay: i * 0.2, duration: 0.8 }}
-                   className="flex flex-col"
-                 >
-                   <h4 className="text-[28px] font-bold mb-6 tracking-tight">{item.title}</h4>
-                   <p className="text-[19px] text-[#86868b] leading-[1.6] flex-1 font-medium">{item.body}</p>
-                   <div className="mt-12 text-[#0071E3] font-bold text-[17px] tracking-tight">{item.label}</div>
-                 </motion.div>
+                 <div key={i}>
+                   <h5 className="text-[21px] font-bold mb-4">{item.title}</h5>
+                   <p className="text-[17px] text-[#86868b] leading-relaxed">{item.body}</p>
+                   <div className="mt-6 text-[#0071E3] font-bold text-[15px]">{item.label}</div>
+                 </div>
                ))}
              </div>
           </div>
         </section>
 
-        {/* Closing CTA */}
-        <section className="bg-white py-48 px-6 text-center border-t border-[rgba(0,0,0,0.05)]">
+        {/* Closing CTA - The \"Big Reveal\" */}
+        <section className="bg-black text-white py-64 px-6 text-center">
            <motion.div
-             initial={{ opacity: 0, scale: 0.95 }}
+             initial={{ opacity: 0, scale: 0.9 }}
              whileInView={{ opacity: 1, scale: 1 }}
              transition={{ duration: 1 }}
            >
-             <h2 className="text-[56px] md:text-[80px] font-bold tracking-tight mb-12">The Future is Action.</h2>
-             <button className="bg-black hover:bg-[#1D1D1F] text-white text-[21px] px-12 py-5 rounded-full font-semibold transition-all shadow-2xl hover:scale-[1.05] active:scale-95">
+             <h2 className="text-[64px] md:text-[100px] font-bold tracking-[-0.04em] mb-12">The Future is Action.</h2>
+             <p className="text-[#86868b] text-[24px] mb-16 max-w-2xl mx-auto">Join the founders engineering high-velocity organizations.</p>
+             <button className="bg-white hover:bg-gray-100 text-black text-[21px] px-12 py-5 rounded-full font-semibold transition-all hover:scale-[1.05] active:scale-95 shadow-2xl">
                Start Your Evolution
              </button>
-             <p className="mt-12 text-[#86868b] text-[17px] font-medium tracking-tight">Free to start. Exceptional results only.</p>
            </motion.div>
         </section>
       </main>
 
-      {/*  Footer */}
-      <footer className="bg-[#F5F5F7] text-[#6e6e73] pt-24 pb-32 px-6 border-t border-[rgba(0,0,0,0.08)]">
-        <div className="max-w-[1024px] mx-auto text-[13px] font-medium leading-relaxed tracking-tight">
-          <div className="pb-12 border-b border-[rgba(0,0,0,0.1)] mb-12">
-            <p className="max-w-2xl">1. Metrics based on internal KumoHR data (Apr 2026). KumoHR is an autonomous People OS for high-velocity organizations.</p>
+      {/*  Dark Footer */}
+      <footer className="bg-black text-[#6e6e73] pt-24 pb-32 px-6 border-t border-[rgba(255,255,255,0.08)]">
+        <div className="max-w-[1024px] mx-auto text-[13px] font-medium leading-relaxed">
+          <div className="pb-12 border-b border-[rgba(255,255,255,0.1)] mb-12">
+            <p>1. Performance data based on internal KumoHR audits (April 2026). KumoHR is the first autonomous People OS for high-velocity teams.</p>
           </div>
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
             <div className="flex flex-col md:flex-row gap-8">
               <span>Copyright © 2026 KumoHR. All rights reserved.</span>
               <div className="flex gap-6">
-                <a href="#" className="hover:text-[#1d1d1f] transition-colors">Privacy Policy</a>
-                <a href="#" className="hover:text-[#1d1d1f] transition-colors">Terms of Use</a>
+                <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
+                <a href="#" className="hover:text-white transition-colors">Terms of Use</a>
               </div>
             </div>
-            <div className="text-[#1d1d1f]">United Kingdom</div>
+            <div className="text-white">United Kingdom</div>
           </div>
         </div>
       </footer>
