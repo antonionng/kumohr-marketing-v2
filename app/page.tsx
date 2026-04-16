@@ -58,7 +58,7 @@ const GoldenRatioHero = () => {
                   Start Acting.
                 </h2>
                 <p className="mt-[2.618rem] text-lg leading-[1.618] text-gray-500/80 md:text-xl">
-                  Rippling, Deel, and BambooHR were built to record history. KumoHR is built to act in real-time. We bridge the \"Action Gap\" between data and execution, automating the entire talent lifecycle across 150+ countries.
+                  Rippling, Deel, and BambooHR were built to record history. KumoHR is built to act in real-time. We bridge the "Action Gap" between data and execution, automating the entire talent lifecycle across 150+ countries.
                 </p>
                 <div className="mt-[3.618rem] grid grid-cols-2 gap-8 border-t border-gray-50 pt-[2.618rem]">
                   <div>
@@ -100,10 +100,10 @@ const GoldenRatioHero = () => {
                 { title: 'Invisible Payroll', body: 'Zero manual oversight. KumoHR executes payroll autonomously against real-time local labor laws in 150+ markets.', stat: '0.01% Error Rate' },
                 { title: 'Day-One Readiness', body: 'Contracts, hardware, and access are handled before the employee even joins. Engineering the perfect first impression.', stat: '100% Onboarding ROI' }
               ].map((item, i) => (
-                <div key={i} className=\"group relative rounded-[2.5rem] bg-white p-12 transition-all hover:shadow-[0_40px_80px_rgba(0,0,0,0.04)] border border-gray-100/50\">
-                  <h3 className=\"text-2xl font-bold tracking-tight text-[#1D1D1F]\">{item.title}</h3>
-                  <p className=\"mt-6 text-[1.1rem] leading-[1.618] text-gray-500/80\">{item.body}</p>
-                  <div className=\"mt-[2.618rem] text-sm font-bold uppercase tracking-[0.15em] text-blue-600 transition-all group-hover:translate-x-2\">
+                <div key={i} className="group relative rounded-[2.5rem] bg-white p-12 transition-all hover:shadow-[0_40px_80px_rgba(0,0,0,0.04)] border border-gray-100/50">
+                  <h3 className="text-2xl font-bold tracking-tight text-[#1D1D1F]">{item.title}</h3>
+                  <p className="mt-6 text-[1.1rem] leading-[1.618] text-gray-500/80">{item.body}</p>
+                  <div className="mt-[2.618rem] text-sm font-bold uppercase tracking-[0.15em] text-blue-600 transition-all group-hover:translate-x-2">
                     {item.stat} →
                   </div>
                 </div>
@@ -134,9 +134,9 @@ const GoldenRatioHero = () => {
         <div className="mx-auto max-w-7xl px-8 flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="text-xl font-bold">KumoHR</div>
           <div className="flex gap-10 text-xs font-bold uppercase tracking-widest text-gray-400">
-            <a href=\"#\">Security</a>
-            <a href=\"#\">Privacy</a>
-            <a href=\"#\">Terms</a>
+            <a href="#">Security</a>
+            <a href="#">Privacy</a>
+            <a href="#">Terms</a>
           </div>
           <div className="text-xs text-gray-400">© 2026 KumoHR. All Systems Operational.</div>
         </div>
